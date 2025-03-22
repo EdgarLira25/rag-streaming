@@ -1,6 +1,7 @@
 from datetime import datetime
 from sqlalchemy import CheckConstraint, Column, String, DateTime
-from .base import Base
+
+from src.domains.shared.database.daos.base import Base
 
 
 class UserDao(Base):
@@ -11,7 +12,7 @@ class UserDao(Base):
         ),
     )
     email = Column(String(255), primary_key=True)
+    secret_hash = Column(String(255))
     name = Column(String(255))
     user_type = Column(String(10), default="common", nullable=False)
-    secret_hash = Column(String(255))
     created_at = Column(DateTime, default=datetime.now)
