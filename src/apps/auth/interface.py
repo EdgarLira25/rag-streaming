@@ -1,9 +1,9 @@
 from jwt import ExpiredSignatureError, InvalidTokenError
 from fastapi import APIRouter, Depends
 from fastapi.responses import JSONResponse
-from src.domains.auth.application import AuthApplication
-from src.domains.auth.types.models import AuthUser, RefreshToken
-from src.domains.auth.types.exceptions import (
+from src.apps.auth.application import AuthApplication
+from src.apps.auth.types.models import AuthUser, RefreshToken
+from src.apps.auth.types.exceptions import (
     AuthenticationFail,
     InvalidToken,
     UserNotFound,

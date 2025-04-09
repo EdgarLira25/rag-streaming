@@ -1,6 +1,6 @@
-from src.domains.auth.domain import AuthDomain
-from src.domains.auth.infrastructure import AuthRepository
-from src.domains.auth.types.models import AuthUser, Token, UserInfo
+from src.apps.auth.domain import AuthDomain
+from src.apps.auth.infrastructure import AuthRepository
+from src.apps.auth.types.models import AuthUser, Token, UserInfo
 
 
 class AuthApplication:

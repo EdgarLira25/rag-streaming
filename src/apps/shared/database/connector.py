@@ -1,7 +1,7 @@
 from sqlalchemy.sql.expression import Executable
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.engine import create_engine
-from src.domains.shared.database.daos.base import Base
+from src.apps.shared.database.daos.base import Base
 from src.settings import DATABASE_URI
 
 engine = create_engine(

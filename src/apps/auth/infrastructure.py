@@ -1,8 +1,8 @@
 from sqlalchemy import select
-from src.domains.auth.types.exceptions import UserNotFound
-from src.domains.auth.types.models import UserInfo
-from src.domains.shared.database.connector import Database
-from src.domains.shared.database.daos.user import UserDao
+from src.apps.auth.types.exceptions import UserNotFound
+from src.apps.auth.types.models import UserInfo
+from src.apps.shared.database.connector import Database
+from src.apps.shared.database.daos.user import UserDao
 
 
 class AuthRepository:

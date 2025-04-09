@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException
 from fastapi.responses import JSONResponse
-from src.domains.user.application import UserApplication
-from src.domains.user.types.models import CreateUserPayload
+from src.apps.user.application import UserApplication
+from src.apps.user.types.models import CreateUserPayload
 
 
 user_router = APIRouter(prefix="/user", tags=["User"])

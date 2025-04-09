@@ -1,8 +1,8 @@
 from datetime import UTC, datetime, timedelta
 import hashlib
 import jwt
-from src.domains.auth.types.exceptions import AuthenticationFail, InvalidToken
-from src.domains.auth.types.models import UserInfo
+from src.apps.auth.types.exceptions import AuthenticationFail, InvalidToken
+from src.apps.auth.types.models import UserInfo
 from src.settings import ALGORITHM, REFRESH_TOKEN_TIME, SECRET_KEY, TOKEN_TIME
 
 

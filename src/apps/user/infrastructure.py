@@ -1,7 +1,7 @@
 from sqlalchemy import insert
 from sqlalchemy.exc import IntegrityError
-from src.domains.shared.database.connector import Database
-from src.domains.shared.database.daos.user import UserDao
+from src.apps.shared.database.connector import Database
+from src.apps.shared.database.daos.user import UserDao
 
 
 class UserRepository:
