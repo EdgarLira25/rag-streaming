@@ -1,7 +1,8 @@
 from fastapi import FastAPI
 from fastapi.responses import RedirectResponse
 from src.apps.user.interface import user_router
-from src.apps.auth.interface import auth_router
+from src.apps.auth.interface.router import auth_router
+
 
 app = FastAPI()
 app.include_router(user_router)

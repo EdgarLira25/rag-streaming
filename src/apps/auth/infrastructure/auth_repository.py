@@ -1,15 +1,16 @@
 from sqlalchemy import select
+from src.apps.auth.domain.base.auth_repository import AuthAbstractRepository
 from src.apps.auth.types.exceptions import UserNotFound
 from src.apps.auth.types.models import UserInfo
 from src.apps.shared.database.connector import Database
 from src.apps.shared.database.daos.user import UserDao
 
 
-class AuthRepository:
+class AuthRepository(AuthAbstractRepository):
 
     user = UserDao
 
-    def __init__(self, database_provider=Database()) -> None:
+    def __init__(self, database_provider: Database) -> None:
         self.db = database_provider
 
     def get_secret_hash(self, email: str) -> str:

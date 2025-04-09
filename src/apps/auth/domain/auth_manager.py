@@ -6,7 +6,7 @@ from src.apps.auth.types.models import UserInfo
 from src.settings import ALGORITHM, REFRESH_TOKEN_TIME, SECRET_KEY, TOKEN_TIME
 
 
-class AuthDomain:
+class AuthManager:
     def check_secret_hash(self, email: str, password: str, secret_hash: str) -> None:
         if not hashlib.sha256(f"{email}{password}".encode()).hexdigest() == secret_hash:
             raise AuthenticationFail("Invalid Password")
