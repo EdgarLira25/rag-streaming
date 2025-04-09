@@ -1,14 +1,16 @@
-from src.apps.auth.domain import AuthDomain
-from src.apps.auth.infrastructure import AuthRepository
+from src.apps.auth.domain.auth_manager import AuthManager
+from src.apps.auth.infrastructure.auth_repository import AuthRepository
 from src.apps.auth.types.models import AuthUser, Token, UserInfo
 
 
-class AuthApplication:
+class AuthUseCases:
     def __init__(
-        self, auth_domain=AuthDomain(), auth_repository=AuthRepository()
+        self,
+        auth_domain: AuthManager,
+        auth_repository: AuthRepository,
     ) -> None:
-        self.auth_domain: AuthDomain = auth_domain
-        self.auth_repository: AuthRepository = auth_repository
+        self.auth_domain = auth_domain
+        self.auth_repository = auth_repository
 
     async def _gen_token(self, user_info: UserInfo):
         return Token(
