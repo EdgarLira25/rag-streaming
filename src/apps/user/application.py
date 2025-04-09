@@ -1,6 +1,6 @@
-from src.domains.user.domain import UserDomain
-from src.domains.user.infrastructure import UserRepository
-from src.domains.user.types.models import CreateUserPayload
+from src.apps.user.domain import UserDomain
+from src.apps.user.infrastructure import UserRepository
+from src.apps.user.types.models import CreateUserPayload
 
 
 class UserApplication:

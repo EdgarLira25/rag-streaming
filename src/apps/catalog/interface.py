@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from src.domains.catalog.application import CatalogApplication
+from src.apps.catalog.application import CatalogApplication
 
 catalog_router = APIRouter(prefix="/catalog", tags=["Catalog"])
 

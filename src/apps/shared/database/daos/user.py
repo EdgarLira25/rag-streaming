@@ -1,7 +1,7 @@
 from datetime import datetime
 from sqlalchemy import CheckConstraint, Column, String, DateTime
 
-from src.domains.shared.database.daos.base import Base
+from src.apps.shared.database.daos.base import Base
 
 
 class UserDao(Base):

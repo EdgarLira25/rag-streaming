@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from src.domains.subtitles.application import SubtitlesApplication
+from src.apps.subtitles.application import SubtitlesApplication
 
 subtitles_router = APIRouter(prefix="/subtitles", tags=["Subtitles"])
 

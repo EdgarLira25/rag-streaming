@@ -1,6 +1,6 @@
 import uvicorn
 from src.app import app
-from src.domains.shared.database.connector import Database
+from src.apps.shared.database.connector import Database
 
 
 if __name__ == "__main__":

@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Request
-from src.domains.streaming.application import StreamingApplication
+from src.apps.streaming.application import StreamingApplication
 
 stream_router = APIRouter(prefix="/stream", tags=["Streaming"])
 
