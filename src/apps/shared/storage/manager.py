@@ -4,7 +4,7 @@ from typing import Optional
 from src.settings import STORAGE_LOCATION
 
 
-class AnyContainerSelected(Exception): ...
+class NoContainerSelected(Exception): ...
 
 
 class StorageService:
@@ -23,7 +23,7 @@ class StorageService:
     @property
     def _base_path(self) -> Path:
         if not self.__selected_container:
-            raise AnyContainerSelected("Nenhum Container Selecionado")
+            raise NoContainerSelected("Nenhum Container Selecionado")
         return Path(self.__base_path + self.__selected_container)
 
     def create_container(self, container: str):
