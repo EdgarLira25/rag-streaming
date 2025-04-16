@@ -1,3 +1,4 @@
+import base64
 from pathlib import Path
 from typing import Optional, Self
 
@@ -26,6 +27,9 @@ class StorageService:
             raise NoContainerSelected("Nenhum Container Selecionado")
         return Path(self.__base_path + self.__selected_container)
 
+    def _get_path(self, filename_or_prefix=""):
+        return Path(self._base_path.as_posix() + filename_or_prefix)
+
     def create_container(self, container: str) -> None:
         Path(self.__base_path + container).mkdir(exist_ok=True)
 
@@ -34,14 +38,20 @@ class StorageService:
         return self
 
     def create_blob(self, filename: str, file: bytes) -> str:
-        path = self._base_path / filename
+        path = self._get_path(filename)
         path.parent.mkdir(exist_ok=True)
         with open(path, "wb") as f:
             f.write(file)
         return filename
 
+    def get_blob_base64(self, filename: str) -> str:
+        blob = self._get_path(filename)
+        if blob.is_file():
+            return base64.b64encode(blob.read_bytes()).decode("utf-8")
+        return ""
+
     def get_blob(self, filename: str) -> bytes:
-        blob = Path(filename)
+        blob = self._get_path(filename)
         if blob.is_file():
             return blob.read_bytes()
         return bytes()
@@ -49,18 +59,18 @@ class StorageService:
     def list_blobs(self, prefix="") -> list[str]:
         return [
             path.as_posix().replace(self._base_path.as_posix(), "", 1)
-            for path in (self._base_path / prefix).rglob("*")
+            for path in Path(self._base_path.as_posix() + prefix).rglob("*")
             if path.is_file()
         ]
 
     def delete_blob(self, filename: str) -> None:
-        blob = self._base_path / filename
-        if Path(blob).is_file():
+        blob = Path(self._base_path.as_posix() + filename)
+        if blob.is_file():
             blob.unlink()
             self._delete_empty_dirs(blob.parent)
 
     def delete_many_blobs(self, prefix="") -> None:
-        for blob in (self._base_path / prefix).rglob("*"):
+        for blob in Path(self._base_path.as_posix() + prefix).rglob("*"):
             if blob.is_file():
                 blob.unlink()
                 self._delete_empty_dirs(blob.parent)
