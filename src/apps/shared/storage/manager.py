@@ -39,7 +39,7 @@ class StorageService:
 
     def create_blob(self, filename: str, file: bytes) -> str:
         path = self._get_path(filename)
-        path.parent.mkdir(exist_ok=True)
+        path.parent.mkdir(parents=True, exist_ok=True)
         with open(path, "wb") as f:
             f.write(file)
         return filename
