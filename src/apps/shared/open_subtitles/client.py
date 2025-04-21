@@ -11,7 +11,11 @@ TIMEOUT = 15
 class OpenSubtitle:
     def __init__(self) -> None:
         self.base_url = "https://api.opensubtitles.com/api/v1"
-        self._header = {"Api-Key": OPEN_SUBTITLE_API_KEY, "Authorization": ""}
+        self._header = {
+            "Api-Key": OPEN_SUBTITLE_API_KEY,
+            "Authorization": "",
+            "User-Agent": "rag-streaming/0.0.0",
+        }
         self._bearer = ""
 
     @property
