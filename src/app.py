@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, status
 from fastapi.responses import RedirectResponse
 from src.apps.user.interface.router import user_router
 from src.apps.auth.interface.router import auth_router
@@ -12,4 +12,4 @@ app.include_router(catalog_router)
 
 @app.get("/")
 def root():
-    return RedirectResponse("/docs")
+    return RedirectResponse("/docs", status_code=status.HTTP_308_PERMANENT_REDIRECT)
